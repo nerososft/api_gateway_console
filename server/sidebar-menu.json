@@ -1,0 +1,35 @@
+[
+  {
+    "text": "Console",
+    "heading": "true"
+  },
+  {
+    "text": "API",
+    "sref": "#",
+    "icon": "icon-support",
+    "alert": "" ,
+    "label": "label label-info", 
+    "submenu": [
+      {
+        "text": "Document",
+        "sref": "app.apinote"
+      },
+      {
+        "text": "Mock",
+        "sref": "app.mock"
+      }
+    ]
+  },
+  {
+    "text": "Origin Control",
+    "sref": "app.origin",
+    "icon": "icon-globe",
+    "label": "label label-info"
+  },
+  {
+    "text": "IP Table",
+    "sref": "app.iptable",
+    "icon": "icon-list",
+    "label": "label label-info"
+  }
+]

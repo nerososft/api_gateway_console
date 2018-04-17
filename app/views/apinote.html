@@ -1,0 +1,90 @@
+<h3>
+	API Document
+</h3>
+<div ng-controller="ApiDocument">
+    <!-- Loading Animation Start -->
+    <div ng-show="!datas" style="position: fixed;top: 50%;left: 0;right: 0;text-align: center;">
+        <div class="sk-spinner sk-spinner-cube-grid" style="width: 60px;height: 60px;">
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+        </div>
+    </div>
+    <!-- Loading Animation End -->
+    <!-- Table Container Start -->
+    <div class="container-fluid" ng-show="datas">
+        <table datatable="ng" class="table row-border hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>API Name</th>
+                    <th>Params</th>
+                    <th>Return Type</th>
+                    <th>Operating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas" ng-click="getDetail($index)" class="apidocumentrow">
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ data.apiName }}</td>
+                    <td>
+                        <span ng-if="data.params.length > 0" ng-repeat="item in data.params">
+							<strong>{{ item }}</strong> : {{ data.paramsType[$index] }}<br>
+						</span>
+                        <span ng-if="data.params.length == 0">/</span>
+                    </td>
+                    <td>{{ data.returnType }}</td>
+                    <td>
+                        <button type="button" class="mb-sm btn btn-primary" ng-click="mock($index);$event.stopPropagation();">M o c k</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Table Container End -->
+</div>
+<!-- detailData Dialog Template Start -->
+<script type="text/ng-template" id="getDetail">
+    <div>
+        <h2 class="mt0">{{ detailData.apiName }}</h2>
+        <br>
+        <p>
+            <h4>Params: </h4>
+            <span ng-if="detailData.params.length > 0" ng-repeat="item in detailData.params" style="padding-left: 2em;">
+    			<strong>{{ item }}</strong> : {{ detailData.paramsType[$index] }}<br>
+    		</span>
+            <span ng-if="detailData.params.length == 0" style="padding-left: 2em;">/</span>
+        </p>
+        <p>
+            <h4>Return Type: </h4>
+            <p style="padding-left: 2em;">{{ detailData.returnType }}</p>
+        </p>
+        <p>
+            <h4>Target Method: </h4>
+            <p style="padding-left: 2em;word-break:break-all;word-wrap:break-word;">{{ detailData.targetMethod }}</p>
+        </p>
+</script>
+<!-- detailData Dialog Template End -->
+<!-- Add Mock Dialog Template Start -->
+<script type="text/ng-template" id="addMock">
+    <div>
+        <h2 class="mt0">Mock API <small>{{ detailData.apiName }}</small></h2>
+        <div class="panel-heading">
+            <h4>Return Type: <small>{{ detailData.returnType }}</small></h4>
+            <h5>Please Enter Mock Data（JSON Format）</h5>
+        </div>
+        <div class="panel-body">
+            <div class="form-group" ng-class="{ 'whirl sphere' : addMockLoading }">
+                <textarea style="width: 100%;height: 160px;resize: none;padding: 18px;" ng-model="detailData.mockData"></textarea>
+                <button type="button" class="btn btn-block btn-primary" ng-click="addMock()">Submit</button>
+            </div>
+        </div>
+    </div>
+</script>
+<!-- Add Mock Dialog Template End -->

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="angle">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="{{app.description}}">
+   <meta name="keywords" content="{{app.keywords}}">
+   <title data-ng-bind="::pageTitle()"></title>
+
+   <!-- Bootstrap styles-->
+   <link rel="stylesheet" href="app/css/bootstrap.css">
+   <!-- Application styles-->
+   <link rel="stylesheet" href="app/css/app.css">
+   <!-- Custom styles-->
+   <link rel="stylesheet" type="text/css" href="app/css/custom.css">
+</head>
+
+<body class="layout-fixed">
+   <div data-ui-view="" data-autoscroll="false" class="wrapper"></div>
+   <script src="app/js/base.js"></script>
+   <script src="app/js/app.js"></script>
+
+   <script type="text/javascript" src="app/js/custom.js"></script>
+</body>
+
+</html>

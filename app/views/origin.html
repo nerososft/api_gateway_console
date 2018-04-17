@@ -1,0 +1,66 @@
+<h3>
+	Origin Control
+</h3>
+<div ng-controller="OriginControl">
+    <!-- Loading Animation Start -->
+    <div ng-show="!datas" style="position: fixed;top: 50%;left: 0;right: 0;text-align: center;">
+        <div class="sk-spinner sk-spinner-cube-grid" style="width: 60px;height: 60px;">
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+        </div>
+    </div>
+    <!-- Loading Animation End -->
+    <!-- Table Container Start -->
+    <div class="container-fluid" ng-show="datas">
+        <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="row-border hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        <div class="form-group">
+                            <label>
+                                <input placeholder="Name" type="text" name="name" ng-model="post.name" class="form-control" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <label>
+                                <input placeholder="Origin" type="text" name="origin" ng-model="post.origin" class="form-control" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group">
+                            <button type="submit" ng-click="addOrigin()" class="btn btn-labeled btn-success"><span class="btn-label"><em class="fa fa-plus"></em></span>Add Origin</button>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="text-align: center;">ID</th>
+                    <th>Name</th>
+                    <th>Origin</th>
+                    <th style="text-align: center;">Operating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td style="text-align: center;">{{ $index + 1 }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.origin }}</td>
+                    <td style="text-align: center;">
+                        <button type="button" ng-click="delOrigin($index)" class="btn btn-sm btn-danger"><em class="fa fa-trash-o"></em></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Table Container End -->
+</div>

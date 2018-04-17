@@ -1,0 +1,9 @@
+/**=========================
+ * Module: apinote.js
+ * API 文档
+=========================*/
+
+.apidocumentrow td{
+	word-break:break-all;
+	word-wrap:break-word;
+}

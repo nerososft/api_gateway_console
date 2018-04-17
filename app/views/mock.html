@@ -1,0 +1,49 @@
+<h3 ng-controller="MockList">
+	Mock Control
+	<label class="switch switch-lg" style="float: right;">
+		<small>Status：</small>
+		<input type="checkbox" ng-model="status.status" ng-disabled="status.disabled" ng-change="changeStatus()" />
+		<span></span>
+	</label>
+</h3>
+<div ng-controller="MockList">
+    <!-- Loading Animation Start -->
+    <div ng-show="!datas" style="position: fixed;top: 50%;left: 0;right: 0;text-align: center;">
+        <div class="sk-spinner sk-spinner-cube-grid" style="width: 60px;height: 60px;">
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+        </div>
+    </div>
+    <!-- Loading Animation End -->
+    <!-- Table Container Start -->
+    <div class="container-fluid" ng-show="datas">
+        <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="row-border hover">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">ID</th>
+                    <th>API Name</th>
+                    <th>API Return</th>
+                    <th style="text-align: center;">Operating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in datas">
+                    <td style="text-align: center;">{{ $index + 1 }}</td>
+                    <td>{{ data.ApiName }}</td>
+                    <td>{{ data.ApiReturn }}</td>
+                    <td style="text-align: center;">
+                        <button type="button" ng-click="delMock($index)" class="btn btn-sm btn-danger"><em class="fa fa-trash-o"></em></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Table Container End -->
+</div>
